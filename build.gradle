@@ -1,0 +1,53 @@
+// Gradle用の各種プラグインを利用するための定義
+buildscript {
+
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+version = "1.0"
+group = "jp.co.biglobe"
+
+ext {
+    groovyVersion = '2.4.7'
+
+    springBootVersion = '1.4.1.RELEASE'
+
+    akkaVersion = '2.5.1'
+
+    javaslangVersion = '2.0.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compileOnly "org.projectlombok:lombok:1.16.14"
+
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+
+    compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+
+    compile "com.typesafe.akka:akka-actor_2.11:${akkaVersion}"
+
+    compile "io.javaslang:javaslang:${javaslangVersion}"
+    compile "io.javaslang:javaslang-jackson:${javaslangVersion}"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}
