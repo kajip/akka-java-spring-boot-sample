@@ -4,7 +4,11 @@ import akka.actor.AbstractActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import jp.co.biglobe.isp.sample.pi.event.PiApproximation;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 public class Listener extends AbstractActor {
 
     private final LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
